@@ -1,20 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-//generate a file "ptext.txt" for the plaintext
-FILE* plain_text_input(char* filename, int no_of_characters)
+//write to the contents of a file pointer "file"
+void plain_text_input(FILE* file, int no_of_characters)
 {
-    FILE* ptext = fopen(filename,"w");
-
-    //take the string as input
-    char* file_content_string = (char*) malloc((no_of_characters) * sizeof(char));
+    char* file_content_string = (char*) malloc((no_of_characters+1) * sizeof(char));
     printf("Enter plaintext: ");
     fgets(file_content_string, no_of_characters+1, stdin);
-    
-    fprintf(ptext, "%s", file_content_string);
-
+    fprintf(file, "%s", file_content_string);
     free(file_content_string);
-    fclose(ptext);
-    
-    return fopen(filename, "r"); 
 }
