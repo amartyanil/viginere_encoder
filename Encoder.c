@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-//make a string the version of the encoded version of the plaintext file
 void encoder(FILE* plaintext, char* cipher_string)
 {
     //read key length
@@ -10,16 +9,16 @@ void encoder(FILE* plaintext, char* cipher_string)
     scanf("%d", &key_length);
     while (getchar() != '\n');
 
-    char ch;
-    int i; 
-    
+    //read key
     char* key = (char*) malloc((key_length) * sizeof(char));
     printf("Enter key: ");
     fgets(key, key_length + 1, stdin);
     while (getchar() != '\n');
 
+    //do the encoding operation by changing the string
+    char ch;
+    int i;
     i = 0;
-
     while ((ch = fgetc(plaintext)) != EOF)
     {
         if (ch != '\n')
