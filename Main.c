@@ -9,12 +9,14 @@ int main()
     int no_of_characters;   
     printf("Enter number of characters in the plaintext: ");
     scanf("%d", &no_of_characters);
-    
+
+    //read the plaintext
     FILE* plaintext_w = fopen("plaintext.txt", "w");
     while (getchar() != '\n');
     plain_text_input(plaintext_w, no_of_characters);
     fclose(plaintext_w);
 
+    //write the ciphertext
     FILE* plaintext_r = fopen("plaintext.txt","r");
     char* cipher_str = (char*) malloc((no_of_characters+1) * sizeof(char));
     encoder(plaintext_r, cipher_str);
